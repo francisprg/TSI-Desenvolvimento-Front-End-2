@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>atividade2</title>
+  </head>
+  <body>
+    <header>
+    <div class="nav-esquerda">
+        <a href="index.php?acao=home"><span class="nav-logo">LiAqui.</span></a>
+    </div>
+
+    <button type="button" class="menu-hamburguer" id="btn-menu-hamburguer" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav id="nav-principal">
+
+        <?php $acaoAtual = $_GET['acao'] ?? ''; ?>
+
+        <ul class="nav-links">
+            <li>
+                <a href="index.php?acao=home"
+                    class="nav-local <?= ($acaoAtual === '' || $acaoAtual === 'home') ? 'ativo' : '' ?>">
+                    <svg class="nav-icone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 9.5 12 3l9 6.5" />
+                        <path d="M5 9.5V21h14V9.5" />
+                        <path d="M9 21v-6h6v6" />
+                    </svg>
+                    Início
+                </a>
+            </li>
+            <li>
+                <a href="index.php?acao=visualizarperfil&id=<?= $_SESSION['leitor']['idleitor'] ?>"
+                    class="nav-local <?= $acaoAtual === 'visualizarperfil' ? 'ativo' : '' ?>">
+                    <svg class="nav-icone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
+                    </svg>
+                    Meu perfil
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="menu-perfil">
+        <button type="button" id="foto-perfil-btn">
+            <img
+                src="../imagens/<?= $_SESSION['leitor']['fotoleitor'] ?>"
+                alt="Foto do usuário"
+                class="foto-perfil-img">
+        </button>
+
+        <div class="menu-perfil-opcoes" id="menu-perfil-opcoes">
+            <a href="index.php?acao=visualizarperfil&id=<?= $_SESSION['leitor']['idleitor'] ?>">Meu perfil</a>
+            <a href="index.php?acao=logout" class="sair">Sair da conta</a>
+        </div>
+    </div>
+</header>
+     <main class="inicio">
+        <section class="hero-busca">
+            <p class="hero-busca-eyebrow">LiAqui</p>
+            <h1 class="hero-busca-titulo">O que você vai ler hoje?</h1>
+            <p class="hero-busca-sub">Explore uma curadoria de obras clássicas e contemporâneas. Avalie, resenhe e organize os livros que já leu.</p>
+
+            <div class="busca-avancada busca-avancada--hero">
+                <svg class="hero-busca-icone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="Busque por título, autor ou editora">
+                <div class="busca-avancada-separador"></div>
+                <label for="busca-filtro" class="visually-hidden">Filtrar por</label>
+                <select class="busca-filtro" id="busca-filtro">
+                    <option value="titulo">Titulo</option>
+                    <option value="autor">Autor</option>
+                    <option value="editora">Editora</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="container-livros">
+            <div class="filtros-home">
+                <button id="btn-todos" class="filtro-btn ativo">Todos</button>
+                <button id="btn-recentes" class="filtro-btn">Recentes</button>
+                <button id="btn-portugues" class="filtro-btn">Portugues</button>
+                <button id="btn-ingles" class="filtro-btn">Ingles</button>
+            </div>
+
+            <p class="resultados-titulo" id="resultados-titulo"></p>
+            <div class="lista-livros">
+
+
+            </div>
+        </section>
+        <div class="acoes-usuario">
+                <a href="index.php?acao=visualizarcadlivro">Cadastrar livro</a>
+        </div>
+
+    </main>
+         <footer>
+        
+        <div class="footer-conteudo">
+            <h3>LiAqui</h3>
+            <p>Site de avaliacao e resenhas literarias</p>
+        </div>
+        <div class="footer-direitos">
+            <p>Todos os direitos reservados &copy;2026 Liaqui</p>
+        </div>
+    </footer>
+
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
