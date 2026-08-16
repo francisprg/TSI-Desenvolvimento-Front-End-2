@@ -24,7 +24,6 @@ function alternarMenuHamburguer(event) {
     event.stopPropagation();
     const aberto = navPrincipal.classList.toggle('aberto');
     btnHamburguer.classList.toggle('aberto', aberto);
-    btnHamburguer.setAttribute('aria-expanded', aberto);
 }
 
 function fecharMenuHamburguerSeClicarFora(event) {
@@ -64,7 +63,7 @@ function mostrarErro(mensagem) {
 async function carregarLivros() {
     mostrarCarregando();
     try {
-        const response = await fetch('/api/api.php?acao=listarlivros');
+        const response = await fetch("/livros.json");
         if (!response.ok) throw new Error('Falha na requisição');
         todosLivros = await response.json();
         atualizarContadores();
@@ -94,8 +93,13 @@ function atualizarContadores() {
     document.querySelector("#btn-ingles").textContent = `Ingles (${contagem["Ingles"] || 0})`;
 }
 
-async function buscarLivros() {
-    const termo  = document.querySelector('.busca-avancada input').value.trim();
+function buscarLivros() {
+    const termo = document
+        .querySelector('.busca-avancada input')
+        .value
+        .trim()
+        .toLowerCase();
+
     const filtro = document.querySelector('#busca-filtro').value;
 
     if (termo === '') {
@@ -103,17 +107,23 @@ async function buscarLivros() {
         return;
     }
 
-    mostrarCarregando();
-    try {
-        const params = new URLSearchParams({ acao: 'buscarLivroFiltrado', termo, filtro });
-        const response = await fetch(`/api/api.php?${params}`);
-        if (!response.ok) throw new Error('Falha na requisição');
-        const resultado = await response.json();
-        renderizar(resultado);
-    } catch (error) {
-        console.error('Erro na busca:', error);
-        mostrarErro('Não foi possível concluir a busca. Tente novamente.');
-    }
+    const resultado = todosLivros.filter(livro => {
+        if (filtro === 'titulo') {
+            return livro.titulo.toLowerCase().includes(termo);
+        }
+
+        if (filtro === 'autor') {
+            return livro.autor?.toLowerCase().includes(termo);
+        }
+
+        if (filtro === 'isbn') {
+            return livro.isbn.includes(termo);
+        }
+
+        return true;
+    });
+
+    renderizar(resultado);
 }
 
 let debounceTimer;
@@ -129,7 +139,7 @@ function renderizar(lista) {
     document.querySelector(".lista-livros").innerHTML = lista.map(livro => `
         <div class="cartao-livro">
             <a href="index.php?acao=visualizarlivro&id=${livro.idlivro}">
-                <img src="/imagens/${livro.capalivro}" alt="${livro.titulo}">
+                <img src="${livro.capa}" alt="${livro.titulo}">
                 <span>${livro.titulo}</span>
             </a>
         </div>

@@ -1,0 +1,57 @@
+[
+  {
+    "id": 12,
+    "titulo": "Memórias do subsolo",
+    "autor": "Fiódor Dostoiévski",
+    "editora": "Editora 6",
+    "isbn": "8573261854",
+    "paginas": 152,
+    "ano": 2009,
+    "idioma": "Português",
+    "capa": "src/assets/Dostoiesvki.jpg"
+  },
+  {
+    "id": 13,
+    "titulo": "O Trivium - As artes liberais da lógica, da gramática e da retórica",
+    "autor": "Autor 7",
+    "editora": "Editora 7",
+    "isbn": "8588062607",
+    "paginas": 320,
+    "ano": 2015,
+    "idioma": "Português",
+    "capa": "src/assets/Trivium.jpg"
+  },
+  {
+    "id": 14,
+    "titulo": "Lógica socrática",
+    "autor": "Autor 9",
+    "editora": "Editora 4",
+    "isbn": "8594090552",
+    "paginas": 508,
+    "ano": 2024,
+    "idioma": "Português",
+    "capa": "src/assets/logicasocraticacapa.jpg"
+  },
+  {
+    "id": 15,
+    "titulo": "Confissões de Santo Agostinho",
+    "autor": "Santo Agostinho",
+    "editora": "Editora 3",
+    "isbn": "8582850476",
+    "paginas": 416,
+    "ano": 2017,
+    "idioma": "Português",
+    "capa": "src/assets/91hlMYSrG7L._SY466_.jpg"
+  },
+  {
+    "id": 16,
+    "titulo": "Sobre a ira / Sobre a tranquilidade da alma",
+    "autor": "Sêneca",
+    "editora": "Editora 1",
+    "isbn": "8582850069",
+    "paginas": 304,
+    "ano": 2016,
+    "idioma": "Português",
+    "capa": "src/assets/81+LpFdkyAS._SY466_.jpg"
+  }
+]
