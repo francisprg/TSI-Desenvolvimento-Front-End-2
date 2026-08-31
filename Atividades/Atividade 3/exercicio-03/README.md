@@ -1,16 +1,29 @@
-# React + Vite
+## Exercício 03 — Árvore de Componentes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Altere o exemplo anterior para que a arquitetura da aplicação se pareça com o padrão do exemplo do **CardImc**.
 
-Currently, two official plugins are available:
+Ainda seguindo o exemplo do **CardImc**, crie estilos para cada componente, utilizando **CSS puro** e classes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Exemplo de código (referência)
 
-## React Compiler
+\`\`\`
+components/
+├── FilterableProductTable.jsx
+├── ProductCategoryRow.jsx
+└── ProductRow.jsx
+\`\`\`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Estrutura de pastas esperada (padrão CardImc)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+\`\`\`
+src/
+├── assets/
+├── components/
+│   └── CardImc/
+│       ├── CardImc.jsx
+│       └── style.css
+├── App.css
+├── App.jsx
+├── index.css
+└── main.jsx
+\`\`\`

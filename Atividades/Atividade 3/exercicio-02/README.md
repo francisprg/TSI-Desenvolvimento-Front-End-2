@@ -1,16 +1,20 @@
-# React + Vite
+## Exercício 02 — Árvore de Componentes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Use o **Vite** para criar o seu projeto com os exercícios da aula.
 
-Currently, two official plugins are available:
+\`\`\`bash
+npm create vite@latest exerciciosTopico02 -- --template react
+\`\`\`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Escolha o template **react**.
 
-## React Compiler
+### Exemplo de código (referência)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+\`\`\`
+> npm create vite@latest exemplo01Aula02 -- --template react
 
-## Expanding the ESLint configuration
+> npx
+> create-vite exemplo01Aula02 --template react
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✔ Package name: … exemplo01aula02
+\`\`\`
