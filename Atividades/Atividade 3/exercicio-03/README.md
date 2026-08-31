@@ -6,16 +6,16 @@ Ainda seguindo o exemplo do **CardImc**, crie estilos para cada componente, util
 
 ### Exemplo de código (referência)
 
-\`\`\`
+```text
 components/
 ├── FilterableProductTable.jsx
 ├── ProductCategoryRow.jsx
 └── ProductRow.jsx
-\`\`\`
+```
 
 ### Estrutura de pastas esperada (padrão CardImc)
 
-\`\`\`
+```text
 src/
 ├── assets/
 ├── components/
@@ -26,4 +26,4 @@ src/
 ├── App.jsx
 ├── index.css
 └── main.jsx
-\`\`\`
+```
