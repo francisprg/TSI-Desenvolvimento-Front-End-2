@@ -1,120 +1,77 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+
 import './App.css'
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+ 
+  const LIVROS = [
+  {
+    id: 12,
+    titulo: "Memórias do subsolo",
+    autor: "Fiódor Dostoiévski",
+    editora: "Editora 6",
+    isbn: "8573261854",
+    paginas: 152,
+    ano: 2009,
+    idioma: "Português",
+    capa: "/src/assets/Dostoiesvki.jpg",
+  },
+  {
+    id: 13,
+    titulo: "O Trivium - As artes liberais da lógica, da gramática e da retórica",
+    autor: "Autor 7",
+    editora: "Editora 7",
+    isbn: "8588062607",
+    paginas: 320,
+    ano: 2015,
+    idioma: "Português",
+    capa: "/src/assets/Trivium.jpg",
+  },
+  {
+    id: 14,
+    titulo: "Lógica socrática",
+    autor: "Autor 9",
+    editora: "Editora 4",
+    isbn: "8594090552",
+    paginas: 508,
+    ano: 2024,
+    idioma: "Português",
+    capa: "/src/assets/logicasocraticacapa.jpg",
+  },
+  {
+    id: 15,
+    titulo: "Confissões de Santo Agostinho",
+    autor: "Santo Agostinho",
+    editora: "Editora 3",
+    isbn: "8582850476",
+    paginas: 416,
+    ano: 2017,
+    idioma: "Português",
+    capa: "/src/assets/91hlMYSrG7L._SY466_.jpg",
+  },
+  {
+    id: 16,
+    titulo: "Sobre a ira / Sobre a tranquilidade da alma",
+    autor: "Sêneca",
+    editora: "Editora 1",
+    isbn: "8582850069",
+    paginas: 304,
+    ano: 2016,
+    idioma: "Português",
+    capa: "/src/assets/81+LpFdkyAS._SY466_.jpg",
+  },
+];
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+    <Header></Header>
+    <Main livros={LIVROS} />
+    <Footer></Footer>
     </>
   )
 }
