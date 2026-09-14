@@ -1,18 +1,14 @@
-import { useState } from 'react'
+
 import './App.css'
+import Todolist from './components/Todolist/Todolist.jsx'
 
 function App() {
- 
 
 
   return (
     <>
-      
-      
 
-
-
-
+    <Todolist/>
 
     </>
   )
