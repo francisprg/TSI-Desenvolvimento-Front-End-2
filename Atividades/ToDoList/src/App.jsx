@@ -1,122 +1,105 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import ListaDeTarefas from './components/ListaDeTarefas/ListaDeTarefas.jsx';
+import ListaTarefas from './components/ListaTarefas/ListaTarefas';
 
 function App() {
-  const [count, setCount] = useState(0)
+ 
+  const [tarefas, setTarefas] = useState(() => {
+    const dadosSalvos = localStorage.getItem('tarefas');
+
+    if (dadosSalvos) {
+      return JSON.parse(dadosSalvos);
+    }
+
+    return [];
+  });
+
+  
+  function salvarTarefas(tarefasAtualizadas) {
+    localStorage.setItem('tarefas', JSON.stringify(tarefasAtualizadas)); // Guarda os dados dentro do LocalStorage
+
+    setTarefas(tarefasAtualizadas); // Guarda os dados dentro do tarefas com useState
+  }
+
+
+  function editarTarefa(id, novoTitulo, novaDescricao) {
+  
+    const tarefasAtualizadas = tarefas.map((tarefa) => {
+      if (tarefa.id === id) {
+        return {...tarefa, titulo: novoTitulo, descricao: novaDescricao };
+      }
+
+      return tarefa;
+    });
+
+    salvarTarefas(tarefasAtualizadas);
+  }
+
+  function adicionarEtapa(idTarefa, texto) {
+    const novaEtapa = {
+      id: Date.now(),
+      texto: texto
+    };
+
+    const tarefasAtualizadas = tarefas.map((tarefa) => {
+      if (tarefa.id === idTarefa) {
+        const etapasAtuais = tarefa.etapas || [];
+        const etapasAtualizadas = [...etapasAtuais, novaEtapa];
+
+        return {...tarefa, etapas: etapasAtualizadas};
+      }
+
+      return tarefa;
+    });
+
+    salvarTarefas(tarefasAtualizadas);
+  }
+
+  function deletarEtapa(idTarefa, idEtapa) {
+    const tarefasAtualizadas = tarefas.map((tarefa) => {
+      if (tarefa.id === idTarefa) {
+        const etapasAtuais = tarefa.etapas || [];
+
+        const etapasAtualizadas = etapasAtuais.filter((etapa) => {
+          return etapa.id !== idEtapa;
+        });
+
+        return {...tarefa, etapas: etapasAtualizadas};}
+
+      return tarefa;
+    });
+
+    salvarTarefas(tarefasAtualizadas);
+  }
+
+  function adicionarTarefa(novaTarefa) {
+    const tarefasAtualizadas = [...tarefas, novaTarefa]; //Todos os elementos que tinham no array TAREFAS agora estao no novo array TarefasAtualizadas
+
+    salvarTarefas(tarefasAtualizadas); 
+  }
+
+  function excluirTarefa(id) {
+    const tarefasAtualizadas = tarefas.filter((tarefa) => {
+      return tarefa.id !== id;
+    });
+
+    salvarTarefas(tarefasAtualizadas);
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app">
+      <ListaDeTarefas aoAdicionar={adicionarTarefa} />
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <ListaTarefas
+        tarefas={tarefas}
+        aoExcluir={excluirTarefa}
+        adicionarEtapa={adicionarEtapa}
+        deletarEtapa={deletarEtapa}
+        editarTarefa={editarTarefa}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
