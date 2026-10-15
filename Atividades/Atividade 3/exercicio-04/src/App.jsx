@@ -22,26 +22,33 @@ function ProductRow({ product }) {
 }
 
 function ProductTable({ products }) {
+
   const rows = [];
+  const categorias = [];
+  
+  products.forEach((product) => {
+      if(categorias.includes(product.category)) {
+          
+        return null;
 
-  let productcategory = [...new Set(products.map((product) => product.category))];
+      }
+      else {
 
-  productcategory.map((category) => {
-    rows.push(
-      <ProductCategoryRow
-        category={category}
-        key={category}
-      />
-    );
+        categorias.push(product.category)
 
-    const produtosDestaCategoria = products.filter(
-      (product) => product.category === category
-    );
+      }
+    }
+  )
 
-    produtosDestaCategoria.map((product) => {
-      rows.push(<ProductRow product={product} key={product.name} />);
-    });
-  });
+  categorias.map((categoria) => {
+      rows.push( <ProductCategoryRow category={categoria} />)
+        products.map((product) => {
+            if(product.category === categoria) {
+              rows.push(<ProductRow product={product} key={product.name} />);
+            }
+        })
+
+  })
 
   return (
     <table>
@@ -55,7 +62,6 @@ function ProductTable({ products }) {
     </table>
   );
 }
-
 
 
 function SearchBar() {
