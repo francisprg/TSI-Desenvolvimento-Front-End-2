@@ -1,10 +1,10 @@
 import { useRef } from 'react';
 import './style.css'
-function FormularioTarefas({ aoAdicionar }) {
+function FormularioTarefas({ adicionarTarefa }) {
   const InputTitulo = useRef(null);
   const InputDescricao = useRef(null);
 
-  function pegarEnvio(event) {
+  function criarTarefa(event) {
     event.preventDefault();
 
     const titulo = InputTitulo.current.value;
@@ -19,14 +19,14 @@ function FormularioTarefas({ aoAdicionar }) {
       etapas: [], 
     };
 
-    aoAdicionar(novaTarefa);
+    adicionarTarefa(novaTarefa);
 
     InputTitulo.current.value = '';
     InputDescricao.current.value = '';
   }
 
   return (
-    <form className="todo-form" onSubmit={pegarEnvio}>
+    <form className="todo-form" onSubmit={criarTarefa}>
       <h1>React ToDoList</h1>
       <p>Crie e organize suas tarefas!!!</p>
 

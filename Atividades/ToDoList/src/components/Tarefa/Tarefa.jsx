@@ -3,9 +3,9 @@ import './style.css';
 
 function Tarefa({
   tarefa,
-  aoExcluir,
-  AdicionarEtapa,
-  deletarEtapa,
+  excluirTarefa,
+  adicionarEtapa,
+  excluirEtapa,
   editarTarefa
 }) {
   const [mostrarDescricao, setMostrarDescricao] = useState(false);
@@ -18,14 +18,14 @@ function Tarefa({
 
   const etapas = tarefa.etapas || [];
 
-  function criarEtapa(event) {
+  function enviarNovaEtapa(event) {
     event.preventDefault();
 
     const textoEtapa = InputEtapa.current.value.trim();
 
     if (!textoEtapa.trim()) return;
 
-    AdicionarEtapa(tarefa.id, textoEtapa.trim());
+    adicionarEtapa(tarefa.id, textoEtapa.trim());
     InputEtapa.current.value = '';
     setMostrarEtapas(true);
   }
@@ -34,7 +34,7 @@ function Tarefa({
     setEditando(true);
   }
 
-  function salvarEdicao(event) {
+  function confirmarEdicao(event) {
     event.preventDefault();
 
     const tituloEditado = InputTitulo.current.value.trim();
@@ -54,9 +54,9 @@ function Tarefa({
   let conteudoEdicao;
 
   if (editando) {
-    // Durante a edição, mostra os campos e os botões de salvar e cancelar.
+  
     conteudoEdicao = (
-        <form onSubmit={salvarEdicao}>
+        <form onSubmit={confirmarEdicao}>
           <input
             type="text"
             aria-label="Título da tarefa"
@@ -92,7 +92,7 @@ function Tarefa({
           type="button"
           className="icon-btn icon-delete"
           aria-label="Excluir"
-          onClick={() => aoExcluir(tarefa.id)}
+          onClick={() => excluirTarefa(tarefa.id)}
         >
           ✕
         </button>
@@ -129,7 +129,7 @@ function Tarefa({
 
       {mostrarEtapas && (
         <div>
-          <form onSubmit={criarEtapa}>
+          <form onSubmit={enviarNovaEtapa}>
             <input
               type="text"
               placeholder="Digite uma etapa"
@@ -147,7 +147,7 @@ function Tarefa({
                 <button
                   type="button"
                   aria-label={`Excluir etapa ${etapa.texto}`}
-                  onClick={() => deletarEtapa(tarefa.id, etapa.id)}
+                  onClick={() => excluirEtapa(tarefa.id, etapa.id)}
                 >
                   ✕
                 </button>

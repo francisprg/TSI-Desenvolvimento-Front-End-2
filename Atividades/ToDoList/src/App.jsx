@@ -16,7 +16,7 @@ function App() {
   });
 
   
-  function salvarTarefas(tarefasAtualizadas) {
+  function atualizarESalvarTarefas(tarefasAtualizadas) {
     localStorage.setItem('tarefas', JSON.stringify(tarefasAtualizadas)); // Guarda os dados dentro do LocalStorage
 
     setTarefas(tarefasAtualizadas); // Guarda os dados dentro do tarefas com useState
@@ -33,7 +33,7 @@ function App() {
       return tarefa;
     });
 
-    salvarTarefas(tarefasAtualizadas);
+    atualizarESalvarTarefas(tarefasAtualizadas);
   }
 
   function adicionarEtapa(idTarefa, texto) {
@@ -53,10 +53,10 @@ function App() {
       return tarefa;
     });
 
-    salvarTarefas(tarefasAtualizadas);
+    atualizarESalvarTarefas(tarefasAtualizadas);
   }
 
-  function deletarEtapa(idTarefa, idEtapa) {
+  function excluirEtapa(idTarefa, idEtapa) {
     const tarefasAtualizadas = tarefas.map((tarefa) => {
       if (tarefa.id === idTarefa) {
         const etapasAtuais = tarefa.etapas || [];
@@ -70,13 +70,13 @@ function App() {
       return tarefa;
     });
 
-    salvarTarefas(tarefasAtualizadas);
+    atualizarESalvarTarefas(tarefasAtualizadas);
   }
 
   function adicionarTarefa(novaTarefa) {
     const tarefasAtualizadas = [...tarefas, novaTarefa]; //Todos os elementos que tinham no array TAREFAS agora estao no novo array TarefasAtualizadas
 
-    salvarTarefas(tarefasAtualizadas); 
+    atualizarESalvarTarefas(tarefasAtualizadas); 
   }
 
   function excluirTarefa(id) {
@@ -84,18 +84,18 @@ function App() {
       return tarefa.id !== id;
     });
 
-    salvarTarefas(tarefasAtualizadas);
+    atualizarESalvarTarefas(tarefasAtualizadas);
   }
 
   return (
     <div className="app">
-      <ListaDeTarefas aoAdicionar={adicionarTarefa} />
+      <ListaDeTarefas adicionarTarefa={adicionarTarefa} />
 
       <ListaTarefas
         tarefas={tarefas}
-        aoExcluir={excluirTarefa}
+        excluirTarefa={excluirTarefa}
         adicionarEtapa={adicionarEtapa}
-        deletarEtapa={deletarEtapa}
+        excluirEtapa={excluirEtapa}
         editarTarefa={editarTarefa}
       />
     </div>

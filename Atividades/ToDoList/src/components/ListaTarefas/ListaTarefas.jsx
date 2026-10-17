@@ -1,6 +1,6 @@
 import Tarefa from "../Tarefa/Tarefa";
 import './style.css'
-function ListaTarefas({ tarefas, aoExcluir, adicionarEtapa, deletarEtapa, editarTarefa}) {
+function ListaTarefas({ tarefas, excluirTarefa, adicionarEtapa, excluirEtapa, editarTarefa}) {
 
     return (
         <div className="task-list">
@@ -8,9 +8,9 @@ function ListaTarefas({ tarefas, aoExcluir, adicionarEtapa, deletarEtapa, editar
                 <Tarefa
                     key={tarefa.id}
                     tarefa={tarefa}
-                    aoExcluir={aoExcluir}
-                    AdicionarEtapa={adicionarEtapa}
-                    deletarEtapa={deletarEtapa}
+                    excluirTarefa={excluirTarefa}
+                    adicionarEtapa={adicionarEtapa}
+                    excluirEtapa={excluirEtapa}
                     editarTarefa={editarTarefa}
                 />
             ))}

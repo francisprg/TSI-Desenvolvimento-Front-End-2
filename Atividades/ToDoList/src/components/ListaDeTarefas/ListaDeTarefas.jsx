@@ -1,10 +1,10 @@
 import FormularioTarefas from "../FormularioTarefas/FormularioTarefas";
 import './style.css'
 
-function ListaDeTarefas({ aoAdicionar }) {
+function ListaDeTarefas({ adicionarTarefa }) {
 
     return (
-        <FormularioTarefas aoAdicionar={aoAdicionar} />
+        <FormularioTarefas adicionarTarefa={adicionarTarefa} />
     )
 
 }
