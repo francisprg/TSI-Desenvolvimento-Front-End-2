@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import ListaDeTarefas from './components/ListaDeTarefas/ListaDeTarefas.jsx';
+import FormTarefa from './components/FormTarefa/FormTarefa.jsx';
 import ListaTarefas from './components/ListaTarefas/ListaTarefas';
 
 function App() {
@@ -89,7 +89,7 @@ function App() {
 
   return (
     <div className="app">
-      <ListaDeTarefas adicionarTarefa={adicionarTarefa} />
+      <FormTarefa adicionarTarefa={adicionarTarefa} />
 
       <ListaTarefas
         tarefas={tarefas}
