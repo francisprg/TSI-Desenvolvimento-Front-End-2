@@ -1,0 +1,16 @@
+.list-title {
+  margin: 24px 0 44px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+  max-width: 355px;
+  margin: 0 auto;
+  counter-reset: tarefas;
+}
