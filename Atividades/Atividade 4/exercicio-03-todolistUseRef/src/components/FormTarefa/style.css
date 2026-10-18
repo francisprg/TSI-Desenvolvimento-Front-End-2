@@ -1,0 +1,98 @@
+.todo-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: 355px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.todo-form > * {
+    grid-column: 1;
+    min-width: 0;
+}
+
+.todo-form h1 {
+    justify-self: center;
+    margin: 0 0 35px;
+    font-size: clamp(32px, 7vw, 51.2px);
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.todo-form p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.todo-form label {
+    margin: 0 0 4px;
+    font-size: 32px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.todo-form label[for="texto"] {
+    margin-top: 24px;
+}
+
+.todo-form input,
+.todo-form textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 2px;
+    font: inherit;
+    color: inherit;
+    background: #f8f8f8;
+    border-radius: 0;
+}
+
+.todo-form input {
+    height: 52px;
+    font-size: 24px;
+    border: 2px inset #d9d9d9;
+}
+
+.todo-form textarea {
+    height: 201px;
+    min-height: 201px;
+    font-size: 20px;
+    border: 1px solid #888;
+    resize: vertical;
+}
+
+.todo-form input::placeholder,
+.todo-form textarea::placeholder {
+    color: #888;
+    opacity: 1;
+}
+
+.todo-form button {
+    justify-self: center;
+    max-width: 100%;
+    margin-top: 28px;
+    padding: 14px 30px;
+    font: inherit;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 34px;
+    color: inherit;
+    background: #f8f8f8;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.todo-form button:hover {
+    background: #e8e8e8;
+}
+
+.todo-form input:focus-visible,
+.todo-form textarea:focus-visible {
+    outline: 2px solid #426c91;
+    outline-offset: 2px;
+}
+

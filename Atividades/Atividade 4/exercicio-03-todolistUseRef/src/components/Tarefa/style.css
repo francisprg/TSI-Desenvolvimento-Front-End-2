@@ -1,0 +1,86 @@
+.task-card {
+  padding: 0 16px;
+  background: #e6e1e1;
+  border-radius: 20px;
+  text-align: center;
+  overflow-wrap: anywhere;
+  counter-increment: tarefas;
+}
+
+.task-card > h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 42px;
+}
+
+.task-card > h1::before {
+  content: counter(tarefas) "º - ";
+}
+
+.task-card button {
+  margin: 0 4px;
+  padding: 2px 4px;
+  font-size: 14px;
+  line-height: 32px;
+  vertical-align: middle;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.task-card button:hover {
+  background: #d5cece;
+}
+
+.task-card > button:nth-of-type(-n + 2) {
+  font-size: 26px;
+}
+
+.task-description {
+  margin: 0;
+}
+
+.task-description summary {
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 24px;
+  line-height: 36px;
+  cursor: pointer;
+}
+
+.task-description p {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.task-card ol {
+  padding-left: 26px;
+  text-align: left;
+}
+
+.task-card li {
+  padding: 6px 0;
+}
+
+.task-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.task-card form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.task-card form button {
+  background: #f8f8f8;
+}
