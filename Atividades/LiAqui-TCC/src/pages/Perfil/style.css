@@ -1,0 +1,78 @@
+.perfil {
+    min-height: calc(100vh - 4rem);
+    padding: 3rem 1rem;
+    background: #faf6ee;
+    color: #16304d;
+    font-family: Arial, sans-serif;
+}
+
+.container-perfil {
+    display: grid;
+    grid-template-columns: 17rem minmax(0, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.perfil-conteudo {
+    min-width: 0;
+}
+
+.perfil-conteudo h1 {
+    margin-bottom: 1.75rem;
+    font-family: Georgia, serif;
+    font-size: 2rem;
+}
+
+.perfil-secao-titulo {
+    margin-bottom: 1.25rem;
+    font-size: 1.125rem;
+}
+
+.lista-resenhas {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.perfil-vazio {
+    padding: 2rem;
+    border: 1px solid #e3dfd5;
+    border-radius: 0.75rem;
+    background: white;
+    color: #5a6a7e;
+    text-align: center;
+}
+
+.perfil-btn {
+    padding: 0.75rem 1rem;
+    border: 0;
+    border-radius: 0.375rem;
+    background: #16304d;
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.perfil button:disabled {
+    opacity: 0.55;
+    cursor: default;
+}
+
+.perfil button:focus-visible,
+.modal-resenha button:focus-visible,
+.modal-resenha textarea:focus-visible {
+    outline: 2px solid #3c6e9c;
+    outline-offset: 3px;
+}
+
+@media (max-width: 48rem) {
+    .perfil {
+        padding: 1.5rem 1rem;
+    }
+
+    .container-perfil {
+        grid-template-columns: 1fr;
+    }
+}

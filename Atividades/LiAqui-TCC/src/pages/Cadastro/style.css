@@ -1,0 +1,183 @@
+.login-cadastro {
+    min-height: 100vh;
+    padding: 3rem 1rem;
+    background: #faf6ee;
+    color: #16304d;
+    font-family: Arial, sans-serif;
+}
+
+.login-cadastro .login-intro {
+    max-width: 30rem;
+    margin: 0 auto 2rem;
+    text-align: center;
+}
+
+.login-cadastro .login-intro h1 {
+    margin-bottom: 0.75rem;
+    font-family: Georgia, serif;
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+}
+
+.login-cadastro .login-intro p {
+    color: #5a6a7e;
+    line-height: 1.6;
+}
+
+.login-cadastro .auth-card {
+    max-width: 30rem;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid #e3dfd5;
+    border-radius: 0.75rem;
+    background: white;
+}
+
+.login-cadastro .auth-titulo {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.login-cadastro .auth-conteudo {
+    padding: 1.75rem;
+}
+
+.login-cadastro form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+}
+
+.login-cadastro .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.login-cadastro .campo label {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.login-cadastro .campo input {
+    width: 100%;
+    min-width: 0;
+    min-height: 2.875rem;
+    padding: 0.75rem;
+    border: 1px solid #ccd2d9;
+    border-radius: 0.375rem;
+    background: white;
+    color: #16304d;
+    font: inherit;
+}
+
+.login-cadastro input:focus-visible,
+.login-cadastro a:focus-visible,
+.login-cadastro button:focus-visible {
+    outline: 2px solid #3c6e9c;
+    outline-offset: 3px;
+}
+
+.login-cadastro .btn-primario {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2.875rem;
+    padding: 0.75rem 1rem;
+    border: 0;
+    border-radius: 0.375rem;
+    background: #16304d;
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-cadastro .btn-primario:hover {
+    background: #254a70;
+}
+
+.login-cadastro .auth-troca {
+    margin-top: 1.5rem;
+    color: #5a6a7e;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.login-cadastro .auth-troca-link {
+    border: 0;
+    background: transparent;
+    color: #16304d;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-cadastro .container-foto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.login-cadastro .container-foto img {
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid #e3dfd5;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.login-cadastro .container-foto input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+.login-cadastro .container-foto input:focus-visible + label {
+    outline: 2px solid #3c6e9c;
+    outline-offset: 3px;
+}
+
+.login-cadastro .container-foto .btn-primario {
+    min-height: 2.5rem;
+    background: #eef2f6;
+    color: #16304d;
+    font-size: 0.875rem;
+}
+
+.login-cadastro .campos-duplos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+@media (max-width: 30rem) {
+    .login-cadastro {
+        padding: 2rem 1rem;
+    }
+
+    .login-cadastro .auth-conteudo {
+        padding: 1.25rem;
+    }
+
+    .login-cadastro .campos-duplos {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.login-intro .mensagem-login {
+
+    
+    padding: 2px;
+    color: rgb(11, 231, 84);
+    background-color: white;
+
+}

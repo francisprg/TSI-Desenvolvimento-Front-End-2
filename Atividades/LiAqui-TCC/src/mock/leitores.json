@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nome": "Lucas Almeida",
+    "apelido": "lucasleitor",
+    "bio": "Gosto de literatura clássica, filosofia e de descobrir novas histórias.",
+    "foto": "/imagens/userlogo.png"
+  },
+  {
+    "id": 2,
+    "nome": "Ana Souza",
+    "apelido": "analeitora",
+    "bio": "Gosto de estudar e compartilhar minhas impressões sobre cada leitura.",
+    "foto": "/imagens/userlogo.png"
+  }
+]

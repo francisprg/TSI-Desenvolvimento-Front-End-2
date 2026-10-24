@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "leitorId": 1,
+    "titulo": "Memórias do subsolo",
+    "capa": "/imagens/Dostoiesvki.jpg",
+    "texto": "Uma leitura que faz refletir sobre os pensamentos e as contradições humanas.",
+    "data": "2026-10-15",
+    "estrelas": 5,
+    "comentarios": []
+  },
+  {
+    "id": 2,
+    "leitorId": 1,
+    "titulo": "O Trivium",
+    "capa": "/imagens/Trivium.jpg",
+    "texto": "Gostei da relação entre lógica, gramática e retórica. Um livro para ler com calma.",
+    "data": "2026-10-10",
+    "estrelas": 4,
+    "comentarios": []
+  },
+  {
+    "id": 3,
+    "leitorId": 2,
+    "titulo": "O Trivium",
+    "capa": "/imagens/Trivium.jpg",
+    "texto": "Uma leitura interessante sobre como organizar as ideias e se comunicar melhor.",
+    "data": "2026-10-12",
+    "estrelas": 5,
+    "comentarios": []
+  }
+]

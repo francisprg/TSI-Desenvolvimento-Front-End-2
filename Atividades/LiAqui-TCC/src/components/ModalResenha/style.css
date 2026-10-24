@@ -1,0 +1,85 @@
+.modal-resenha {
+    width: min(32rem, calc(100% - 2rem));
+    max-height: calc(100dvh - 2rem);
+    margin: auto;
+    padding: 0;
+    border: 1px solid #e3dfd5;
+    border-radius: 0.75rem;
+    background: white;
+    color: #16304d;
+    font-family: Arial, sans-serif;
+}
+
+.modal-resenha::backdrop {
+    background: rgba(22, 48, 77, 0.5);
+}
+
+.modal-resenha-conteudo {
+    padding: 1.5rem;
+}
+
+.modal-resenha-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.modal-resenha-cabecalho h2 {
+    font-size: 1.25rem;
+}
+
+.modal-resenha-fechar {
+    padding: 0.5rem;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 1.125rem;
+    cursor: pointer;
+}
+
+.modal-resenha-livro {
+    margin: 0.5rem 0 1.25rem;
+    color: #5a6a7e;
+    line-height: 1.5;
+}
+
+.modal-resenha-lista {
+    display: grid;
+    gap: 1rem;
+    max-height: 15rem;
+    margin-bottom: 1.5rem;
+    overflow-y: auto;
+    color: #5a6a7e;
+    line-height: 1.6;
+}
+
+.modal-resenha-comentario {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e3dfd5;
+    overflow-wrap: anywhere;
+}
+
+.modal-resenha-comentario strong {
+    color: #16304d;
+}
+
+.modal-resenha-comentario p {
+    white-space: pre-wrap;
+}
+
+.modal-resenha-form {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.modal-resenha-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccd2d9;
+    border-radius: 0.375rem;
+    color: inherit;
+    font: inherit;
+    line-height: 1.5;
+    resize: vertical;
+}
