@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <ul className="nav-links">
       <li>
-        <Link to='/'>
+        <Link to='home'>
           <svg className="nav-icone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M3 9.5 12 3l9 6.5" />
             <path d="M5 9.5V21h14V9.5" />
