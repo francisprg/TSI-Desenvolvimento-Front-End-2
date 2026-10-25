@@ -7,6 +7,7 @@ import Cadastro from './pages/Cadastro/Cadastro';
 import Perfil from './pages/Perfil/Perfil';
 import Sobre from './pages/Sobre/Sobre';
 import LayoutPrincipal from './layouts/MainLayout';
+import { MockDadosProvider } from './providers/MockDadosProvider';
 
 
 const router = createBrowserRouter([
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     element: <LayoutPrincipal/>,
     children: [
       {index: true, element: <App/>},
-      {path: 'perfil/:id', element: <Perfil/>},
+      {path: 'perfil/:id', element: <MockDadosProvider><Perfil/></MockDadosProvider>},
       {path: 'sobre', element: <Sobre/>},
     ]
   },

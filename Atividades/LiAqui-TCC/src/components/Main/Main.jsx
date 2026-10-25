@@ -3,14 +3,14 @@ import BookShowcase from "../BookShowcase/BookShowcase";
 import Filters from "../Filters/Filters";
 import './style.css'
 
-function Main({ livros }) {
+function Main() {
 
     return (
         <main>
             <Hero></Hero>
             <Filters></Filters>
             <div className="container-livros">
-                <BookShowcase livros={livros} />
+                <BookShowcase/>
             </div>
         </main>
     );

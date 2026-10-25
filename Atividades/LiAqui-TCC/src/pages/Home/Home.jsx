@@ -2,12 +2,12 @@
 import Main from "../../components/Main/Main";
 
 
-function Home ({ livros }) {  
+function Home () {  
 
 
 return (
 <>
-    <Main livros={livros} />
+    <Main />
 </>
 )
 

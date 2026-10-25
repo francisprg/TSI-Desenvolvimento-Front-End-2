@@ -1,11 +1,16 @@
-import BookCard from "../BookCard/BookCard";
-import './style.css'
 
-function BookShowcase({ livros }) {
+import { useContext } from "react";
+import BookCard from "../BookCard/BookCard";
+import "./style.css";
+import MockDadosContext from "../../contexts/MockDadosContext";
+
+function BookShowcase() {
+  const { Livros } = useContext(MockDadosContext);
+
   return (
     <section className="container-livros">
       <div className="lista-livros">
-        {livros.map((livro) => (
+        {Livros.map((livro) => (
           <BookCard key={livro.id} livro={livro} />
         ))}
       </div>

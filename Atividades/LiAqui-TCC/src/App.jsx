@@ -1,7 +1,8 @@
 
 import './App.css'
 import Home from './pages/Home/Home';
-import livros from './mock/livros.json';
+import { MockDadosProvider } from './providers/MockDadosProvider';
+
 
 
 
@@ -10,7 +11,9 @@ function App() {
 
   return (
     <>
-      <Home livros={livros}/>
+    <MockDadosProvider>
+      <Home/>
+    </MockDadosProvider>
     </>
   )
 }
