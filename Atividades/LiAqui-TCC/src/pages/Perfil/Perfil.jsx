@@ -2,7 +2,6 @@
 import { useParams } from 'react-router';
 import PerfilSidebar from '../../components/PerfilSidebar/PerfilSidebar';
 import CartaoResenha from '../../components/CartaoResenha/CartaoResenha';
-import './style.css';
 import { useContext } from 'react';
 import MockDadosContext from '../../contexts/MockDadosContext';
 
@@ -20,8 +19,8 @@ function Perfil() {
 
   if (!leitor) {
     return (
-      <main className="perfil">
-        <p className="perfil-vazio">Perfil não encontrado.</p>
+        <main className="min-h-[calc(100vh-4rem)] bg-[#faf6ee] px-4 py-12 font-sans text-[#16304d]">
+        <p className="rounded-xl border border-[#e3dfd5] bg-white p-8 text-center text-[#5a6a7e]">Perfil não encontrado.</p>
       </main>
     );
   }
@@ -30,18 +29,18 @@ function Perfil() {
 
   return (
     
-    <main className="perfil">
-      <div className="container-perfil">
+    <main className="min-h-[calc(100vh-4rem)] bg-[#faf6ee] px-4 py-12 font-sans text-[#16304d] max-md:py-6">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-[17rem_minmax(0,1fr)] gap-8 max-md:grid-cols-1">
         <PerfilSidebar
           leitor={leitor}
           totalResenhas={resenhasFiltradas.length}
         />
 
-        <section className="perfil-conteudo" aria-labelledby="perfil-titulo">
-          <h1 id="perfil-titulo">Perfil de {leitor.nome}</h1>
-          <h2 className="perfil-secao-titulo">Histórico de resenhas</h2>
+        <section className="min-w-0" aria-labelledby="perfil-titulo">
+          <h1 className="mb-7 font-serif text-3xl" id="perfil-titulo">Perfil de {leitor.nome}</h1>
+          <h2 className="mb-5 text-lg">Histórico de resenhas</h2>
 
-          <div className="lista-resenhas">
+          <div className="grid gap-5">
             {resenhasFiltradas.map((resenha) => (
               <CartaoResenha
                 key={resenha.id}

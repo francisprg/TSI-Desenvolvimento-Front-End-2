@@ -1,16 +1,17 @@
-
 import { Link } from 'react-router';
-import './style.css'
-
-
+import userLogo from '../../assets/userlogo.png';
 
 function Avatar() {
   return (
-    <Link to="/perfil/1" id="foto-perfil-btn" aria-label="Meu perfil">
+    <Link
+      to="/perfil/1"
+      aria-label="Meu perfil"
+      className="group inline-block cursor-pointer rounded-full"
+    >
       <img
-        src="/src/assets/userlogo.png"
+        src={userLogo}
         alt="Foto do usuário"
-        className="foto-perfil-img"
+        className="size-9 rounded-full border-2 border-[#e0e0e0] object-cover transition-colors duration-200 pointer-events-none group-hover:border-[#3c6e9c] group-focus-visible:border-[#3c6e9c]"
       />
     </Link>
   );

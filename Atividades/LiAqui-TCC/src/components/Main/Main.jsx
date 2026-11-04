@@ -1,7 +1,6 @@
 import Hero from "../Hero/Hero";
 import BookShowcase from "../BookShowcase/BookShowcase";
 import Filters from "../Filters/Filters";
-import './style.css'
 
 function Main() {
 
@@ -9,9 +8,7 @@ function Main() {
         <main>
             <Hero></Hero>
             <Filters></Filters>
-            <div className="container-livros">
-                <BookShowcase/>
-            </div>
+            <BookShowcase />
         </main>
     );
 }

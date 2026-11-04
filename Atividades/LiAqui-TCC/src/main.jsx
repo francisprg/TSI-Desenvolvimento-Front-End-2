@@ -1,14 +1,15 @@
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import "./index.css";
 import {
   createBrowserRouter,
   RouterProvider
 } from 'react-router';
 
 import App from './App';
-import Login from './pages/Login/Login';
-import Cadastro from './pages/Cadastro/Cadastro';
+import Login from './pages/Auth/Login/Login';
+import Cadastro from './pages/Auth/Cadastro/Cadastro';
 import Perfil from './pages/Perfil/Perfil';
 import Sobre from './pages/Sobre/Sobre';
 import LayoutPrincipal from './layouts/MainLayout';
@@ -16,6 +17,7 @@ import { MockDadosProvider } from './providers/MockDadosProvider';
 import Home from './pages/Home/Home';
 import { AuthProvider } from './providers/AuthProvider';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+;
 
 const router = createBrowserRouter([
   {
@@ -58,7 +60,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: '/cadastro',
+    path: '/Cadastro',
     element: <Cadastro />,
   },
 ]);

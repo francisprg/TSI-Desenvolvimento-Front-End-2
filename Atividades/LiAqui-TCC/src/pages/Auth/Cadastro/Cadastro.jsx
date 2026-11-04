@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router';
-import fotoPerfil from '../../assets/userlogo.png';
-import './style.css'
+import fotoPerfil from '../../../assets/userlogo.png';
+import '../style.scss'
 import { useState } from 'react';
 
 
@@ -22,7 +22,6 @@ function Cadastro() {
       navigate("/");
     }, 3000)
   }
-
 
 
 

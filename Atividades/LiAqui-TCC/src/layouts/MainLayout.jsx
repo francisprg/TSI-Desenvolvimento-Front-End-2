@@ -8,11 +8,11 @@ function MainLayout () {
 
     
 return (
-    <>
-    <Header/>
-      <Outlet/>
-    <Footer/>
-    </> 
+    <div className="flex min-h-screen flex-col pt-16">
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
 )
 
 }

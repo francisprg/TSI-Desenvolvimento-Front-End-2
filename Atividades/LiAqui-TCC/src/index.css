@@ -1,20 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import "tailwindcss";
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+@layer base {
+  body {
+    @apply min-h-screen;
+  }
 
-body:has(header) {
-    padding-top: 4rem;
-}
-
-main {
-    flex: 1;
-    width: 100%;
+  main {
+    @apply w-full flex-1;
+  }
 }
