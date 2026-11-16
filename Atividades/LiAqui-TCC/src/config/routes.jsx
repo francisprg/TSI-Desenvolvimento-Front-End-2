@@ -12,11 +12,12 @@ import Login from "./../pages/Auth/Login/Login";
 import Cadastro from "./../pages/Auth/Cadastro/Cadastro";
 import Perfil from "./../pages/Perfil/Perfil";
 import Dashboard from './../components/DashBoard/DashBoard';
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <>
+        <>  <Route path="*" element={<NotFoundPage/>}></Route>
             <Route path="/" element={<App />} />
             <Route path="/login" element={<Login />} />
             <Route path="/Cadastro" element={<Cadastro />} />
