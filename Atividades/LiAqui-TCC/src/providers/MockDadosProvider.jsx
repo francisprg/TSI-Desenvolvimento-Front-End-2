@@ -5,6 +5,7 @@ import leitoresMock from "../mock/leitoresMock.json";
 import MockDadosContext from "../contexts/MockDadosContext";
 
 export const MockDadosProvider = ({ children }) => {
+  
   const [Livros, setLivros] = useState(livrosMock);
   const [Leitores, setLeitores] = useState(leitoresMock);
   const [Resenhas, setResenhas] = useState(resenhasMock);

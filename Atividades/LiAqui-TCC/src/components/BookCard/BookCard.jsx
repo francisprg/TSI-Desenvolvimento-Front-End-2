@@ -1,6 +1,15 @@
+import { Navigate, useNavigate } from "react-router";
+
 function BookCard({ livro }) {
+
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate(`/livros/${livro.id}`);
+  }
+
   return (
-   <div className="flex flex-col items-start gap-3 rounded-lg text-[#16304d] transition duration-300 ease-[ease] hover:-translate-y-1.5 hover:shadow-[0_1rem_2rem_rgba(22,48,79,0.16)]">
+    <div onClick={handleClick} className="flex flex-col items-start gap-3 rounded-lg text-[#16304d] transition duration-300 ease-[ease] hover:-translate-y-1.5 hover:shadow-[0_1rem_2rem_rgba(22,48,79,0.16)]">
       <img
         src={livro.capa}
         alt={livro.titulo}
