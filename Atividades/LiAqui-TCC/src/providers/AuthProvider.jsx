@@ -2,15 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import AuthContext from '../contexts/AuthContext';
 import axiosClient, { csrfClient } from './../utils/axios-client';
 
-const DEFAULT_VERIFY_USER_INTERVAL = 5 * 60 * 1000;
-const configuredVerifyUserInterval = Number(
-  import.meta.env.VITE_VERIFY_USER_INTERVAL
-);
-const VERIFY_USER_INTERVAL =
-  Number.isFinite(configuredVerifyUserInterval) &&
-  configuredVerifyUserInterval > 0
-    ? configuredVerifyUserInterval
-    : DEFAULT_VERIFY_USER_INTERVAL;
+const VERIFY_USER_INTERVAL =  import.meta.env.VITE_VERIFY_USER_INTERVAL
 
 const getCurrentUser = async () => {
   try {
