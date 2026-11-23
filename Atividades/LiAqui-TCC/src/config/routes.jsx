@@ -11,8 +11,11 @@ import App from "./../App";
 import Login from "./../pages/Auth/Login/Login";
 import Cadastro from "./../pages/Auth/Cadastro/Cadastro";
 import Perfil from "./../pages/Perfil/Perfil";
-import Dashboard from './../components/DashBoard/DashBoard';
+import { DashboardContent } from './../components/DashBoardContent/DashBoardContent';
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import LivrosProvider from "../providers/LivrosProvider";
+import UsersProvider from "../providers/UsersProvider";
+import AutoresProvider from "../providers/AutoresProvider";
 
 
 const router = createBrowserRouter(
@@ -21,8 +24,26 @@ const router = createBrowserRouter(
             <Route path="/" element={<App />} />
             <Route path="/login" element={<Login />} />
             <Route path="/Cadastro" element={<Cadastro />} />
-            <Route element={<Private><LayoutPrincipal/></Private>}>
-                    <Route path="/dashboard" element={<Dashboard />} />
+
+
+            <Route
+                path="/dashboard"
+                element={
+                    <Private>
+                        <LivrosProvider>
+                            <UsersProvider>
+                                <AutoresProvider>
+                                    <DashboardContent />
+                                </AutoresProvider>
+                            </UsersProvider>
+                        </LivrosProvider>
+                    </Private>
+                }
+            />
+
+
+            
+            <Route element={<Private><LivrosProvider><LayoutPrincipal/></LivrosProvider></Private>}>
                     <Route path="/home" element={<Home />} />
                     <Route path="/perfil/:id" element={<Perfil />} />
                     <Route path="/livros/:id" element={<ShowLivro />} />

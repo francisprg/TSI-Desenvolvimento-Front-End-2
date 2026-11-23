@@ -1,78 +1,126 @@
-import { useEffect, useRef, useState } from 'react';
-import AuthContext from '../contexts/AuthContext';
-import axiosClient, { csrfClient } from './../utils/axios-client';
+import { useCallback, useEffect, useRef, useState } from "react";
+import AuthContext from "../contexts/AuthContext";
+import axiosClient, { csrfClient } from "../utils/axios-client";
 
-const VERIFY_USER_INTERVAL =  import.meta.env.VITE_VERIFY_USER_INTERVAL
+const VERIFY_USER_INTERVAL =
+  Number(import.meta.env.VITE_VEIRIFY_USER_INTERVAL) || 60000;
 
-const getCurrentUser = async () => {
+const verifyUser = async () => {
   try {
-    const response = await axiosClient.get('/user');
-    return response.data;
+    const { data } = await axiosClient.get("/user");
+    if (!data) throw new Error("Erro ao recuperar usuário!");
+    return data?.data ?? data;
   } catch (error) {
-    if (error.response?.status !== 401) {
+    if (error.response?.status === 401) {
+      localStorage.removeItem("CURRENT_USER");
+    } else {
       console.error(
-        'Erro ao recuperar usuário:',
+        "Erro ao verificar usuário:",
         error.response?.data?.message || error.message
       );
     }
+    return null;
+  }
+};
 
+const verifyLocalStorage = () => {
+  try {
+    const localStorageUser = JSON.parse(
+      localStorage.getItem("CURRENT_USER")
+    );
+    return localStorageUser?.name ? localStorageUser : null;
+  } catch {
+    localStorage.removeItem("CURRENT_USER");
     return null;
   }
 };
 
 export default function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUserState] = useState(verifyLocalStorage);
+
+  const [isLogged, setIsLogged] = useState(() =>
+    Boolean(verifyLocalStorage())
+  );
+  
   const [loading, setLoading] = useState(true);
   const isVerifying = useRef(false);
 
-  const auth = async (payload) => {
-    await csrfClient.get('/sanctum/csrf-cookie');
-    await axiosClient.post('/login', payload);
+  const setUser = useCallback((nextUser) => {
+    if (nextUser) {
+      const { name, email } = nextUser;
+      localStorage.setItem("CURRENT_USER", JSON.stringify({ name, email }));
+      setUserState(nextUser);
+      setIsLogged(true);
+    } else {
+      localStorage.removeItem("CURRENT_USER");
+      setUserState(null);
+      setIsLogged(false);
+    }
+  }, []);
 
-    const authenticatedUser = await getCurrentUser();
+  const verifyLogin = useCallback(async () => {
+    if (isVerifying.current) return;
 
+    isVerifying.current = true;
+    try {
+      const authenticatedUser = await verifyUser();
+      setUser(authenticatedUser);
+      return Boolean(authenticatedUser);
+    } finally {
+      setLoading(false);
+      isVerifying.current = false;
+    }
+  }, [setUser]);
+
+  const auth = async (credentials) => {
+    await csrfClient.get("/sanctum/csrf-cookie");
+
+    const response = await axiosClient.post("/login", credentials);
+    if (response?.status !== 200) {
+      throw new Error(response.data);
+    }
+
+    const authenticatedUser = response.data?.data ?? response.data;
     if (!authenticatedUser) {
-      throw new Error('Não foi possível recuperar o usuário autenticado.');
+      throw new Error("Erro ao recuperar usuário!");
     }
 
     setUser(authenticatedUser);
   };
 
-  const logout = async () => {
-    await axiosClient.post('/logout');
-    setUser(null);
+  const logOut = async () => {
+    try {
+      await axiosClient.post("/logout");
+    } finally {
+      setUser(null);
+    }
   };
 
   useEffect(() => {
-    const verify = async () => {
-      if (isVerifying.current) return;
-      isVerifying.current = true;
+    verifyLogin();
+  }, [verifyLogin]);
 
-      try {
-        setUser(await getCurrentUser());
-      } finally {
-        setLoading(false);
-        isVerifying.current = false;
-      }
-    };
+  useEffect(() => {
+    if (!isLogged) return undefined;
 
-    verify();
+    const interval = setInterval(
+      verifyLogin,
+      Math.max(VERIFY_USER_INTERVAL, 30000)
+    );
 
-    const interval = setInterval(verify, VERIFY_USER_INTERVAL);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+    return () => clearInterval(interval);
+  }, [isLogged, verifyLogin]);
 
   return (
     <AuthContext.Provider
       value={{
         user,
+        isLogged,
         loading,
         auth,
-        logout,
-        setUser
+        logOut,
+        logout: logOut,
+        setUser,
       }}
     >
       {children}

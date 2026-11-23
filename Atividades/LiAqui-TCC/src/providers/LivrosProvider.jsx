@@ -1,45 +1,49 @@
 import { useState } from "react";
 import LivrosContext from "../contexts/LivrosContext";
-import { fetchLivrossApi } from "../services/fetchApiData";
-
+import { fetchApi } from "../services/fetchApiData";
 
 const LivrosProvider = ({ children }) => {
 
-    
-    const [cacheLivros, setCacheLivros ] = useState([]);
+    const [cacheLivros, setCacheLivros] = useState([]);
 
     const loadLivros = async () => {
 
-      if (cacheLivros?.length>0) return cacheLivros;
-      const livros = await fetchLivrossApi();
-      setCacheLivros(cacheLivros);
-      return livros;
+        if (cacheLivros.length > 0) {
+            return cacheLivros;
+        }
+        
+        const livros = await fetchApi('livros');
+
+        setCacheLivros(livros);
+
+        return livros;
+    };
+
+
+    const freshLivros = async (id) => {
+
+        const livros = await fetchApi('livros', id);
+
+        setCacheLivros(livros);
+
+        return livros;
+    };
+
+
+    const editLivro = async () => {
 
     };
 
 
-    const freshLivros = async(id) => {
-        const livros = fetchLivrossApi();
-        setCacheLivros(livros)
-        return livros;
-    }
+    const deleteLivro = () => {
 
-    
-    
-    const editLivro = async() => {
-
-        
-    }
+    };
 
 
+    const createLivro = () => {
 
-    function deleteLivro() {
+    };
 
-    }
-
-    function createLivro() {
-
-    }
 
     return (
         <LivrosContext.Provider
